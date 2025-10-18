@@ -32,3 +32,20 @@ public class Solution {
         return ans;
     }
 }
+
+public class Solution {
+    public int LengthOfLongestSubstring(string s) {
+        var set = new HashSet<char>();
+        int left = 0, ans = 0;
+
+        for (int r = 0; r < s.Length; r++) {
+            while (set.Contains(s[r])) {
+                set.Remove(s[left]);
+                left++;
+            }
+            set.Add(s[r]);
+            ans = Math.Max(ans, r - left + 1);
+        }
+        return ans;
+    }
+}
